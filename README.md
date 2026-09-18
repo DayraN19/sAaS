@@ -1,4 +1,4 @@
-# SimpleSales
+# SalesAI Assistant
 
 AI-powered sales follow-up emails for freelancers and agencies.
 
@@ -42,21 +42,32 @@ Open [http://localhost:3000](http://localhost:3000).
 
 ```
 src/
-├── app/
-│   ├── (auth)/login/       # Auth pages
-│   ├── (dashboard)/        # Protected app shell
-│   └── api/                # API routes
+├── app/                    # Routes (App Router)
+│   ├── page.tsx            # Landing (/)
+│   ├── login/              # Auth
+│   ├── signup/
+│   ├── dashboard/          # App shell + leads
+│   └── api/
 ├── components/
+│   ├── layout/             # Navbar, Sidebar, layouts
 │   ├── auth/
-│   ├── layout/
 │   ├── leads/
 │   └── ui/
-├── lib/
-│   ├── supabase/           # Browser, server, middleware clients
-│   └── openrouter.ts       # AI client (stub)
+├── lib/                    # Utils, env, Supabase clients
+├── services/               # Business logic (leads, AI)
 └── types/
-supabase/migrations/        # Database schema
+supabase/migrations/
 ```
+
+## Environment variables
+
+| Variable | Scope | Purpose |
+|----------|-------|---------|
+| `NEXT_PUBLIC_SUPABASE_URL` | Public | Supabase project URL |
+| `NEXT_PUBLIC_SUPABASE_ANON_KEY` | Public | Supabase anon key |
+| `NEXT_PUBLIC_APP_URL` | Public | App URL for callbacks |
+| `OPENROUTER_API_KEY` | Server only | AI API key |
+| `OPENROUTER_MODEL` | Server only | Model id (optional) |
 
 ## MVP roadmap
 

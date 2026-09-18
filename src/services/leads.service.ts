@@ -1,7 +1,7 @@
 import type { Lead } from "@/types/lead";
 
-/** Placeholder data until Supabase is wired up. */
-export const MOCK_LEADS: Lead[] = [
+/** Placeholder data until Supabase CRUD is implemented. */
+const MOCK_LEADS: Lead[] = [
   {
     id: "1",
     user_id: "demo",
@@ -36,3 +36,8 @@ export const MOCK_LEADS: Lead[] = [
     updated_at: new Date().toISOString(),
   },
 ];
+
+export async function getLeads(): Promise<Lead[]> {
+  // TODO: fetch from Supabase when auth + DB are wired
+  return MOCK_LEADS;
+}

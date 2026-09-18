@@ -1,23 +1,27 @@
+"use client";
+
 import Link from "next/link";
-import { LayoutDashboard, Users, Sparkles } from "lucide-react";
+import { usePathname } from "next/navigation";
+import { LayoutDashboard, Users } from "lucide-react";
+import { Logo } from "@/components/layout/logo";
 import { cn } from "@/lib/utils";
 
 const navItems = [
   { href: "/dashboard", label: "Leads", icon: Users },
 ];
 
-export function Sidebar({ pathname }: { pathname: string }) {
+export function Sidebar() {
+  const pathname = usePathname();
+
   return (
-    <aside className="hidden w-56 shrink-0 border-r border-zinc-200 bg-zinc-50/50 md:block">
-      <div className="flex h-14 items-center gap-2 border-b border-zinc-200 px-4">
-        <span className="flex h-7 w-7 items-center justify-center rounded-md bg-zinc-900 text-white">
-          <Sparkles className="h-3.5 w-3.5" />
-        </span>
-        <span className="text-sm font-semibold text-zinc-900">SimpleSales</span>
+    <aside className="hidden w-56 shrink-0 border-r border-zinc-200 bg-zinc-50/50 md:flex md:flex-col">
+      <div className="flex h-14 items-center border-b border-zinc-200 px-4">
+        <Logo href="/dashboard" iconClassName="h-7 w-7" className="text-sm" />
       </div>
-      <nav className="space-y-1 p-3">
+      <nav className="flex-1 space-y-1 p-3">
         {navItems.map(({ href, label, icon: Icon }) => {
-          const active = pathname === href || pathname.startsWith(`${href}/`);
+          const active =
+            pathname === href || pathname.startsWith(`${href}/`);
           return (
             <Link
               key={href}
@@ -40,7 +44,7 @@ export function Sidebar({ pathname }: { pathname: string }) {
             More soon
           </div>
           <p className="mt-1 text-xs text-zinc-400">
-            Analytics & templates coming in v2.
+            Analytics & templates in v2.
           </p>
         </div>
       </nav>

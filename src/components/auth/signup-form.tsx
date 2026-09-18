@@ -11,14 +11,14 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 
-export function LoginForm() {
+export function SignupForm() {
   return (
     <Card className="w-full max-w-md">
       <CardHeader>
-        <CardTitle>Welcome back</CardTitle>
+        <CardTitle>Create your account</CardTitle>
         <CardDescription>
-          Sign in with your email. Supabase Auth will be connected in the next
-          step.
+          Start generating AI follow-ups. Supabase Auth will be connected in the
+          next step.
         </CardDescription>
       </CardHeader>
       <CardContent>
@@ -28,6 +28,19 @@ export function LoginForm() {
             e.preventDefault();
           }}
         >
+          <div className="space-y-2">
+            <label htmlFor="name" className="text-sm font-medium text-zinc-700">
+              Full name
+            </label>
+            <Input
+              id="name"
+              name="name"
+              type="text"
+              placeholder="Jane Doe"
+              autoComplete="name"
+              required
+            />
+          </div>
           <div className="space-y-2">
             <label htmlFor="email" className="text-sm font-medium text-zinc-700">
               Email
@@ -42,13 +55,13 @@ export function LoginForm() {
             />
           </div>
           <Button type="submit" className="w-full">
-            Continue with email
+            Create account
           </Button>
         </form>
         <p className="mt-4 text-center text-sm text-zinc-500">
-          Don&apos;t have an account?{" "}
-          <Link href="/signup" className="font-medium text-zinc-900 underline">
-            Sign up
+          Already have an account?{" "}
+          <Link href="/login" className="font-medium text-zinc-900 underline">
+            Log in
           </Link>
         </p>
       </CardContent>
